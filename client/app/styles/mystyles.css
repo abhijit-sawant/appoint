@@ -1,0 +1,134 @@
+@import (reference) "bower_components/bootstrap/less/bootstrap";
+
+.cell-centered {
+    text-align:center;
+}
+
+.cell-small {
+  width: 1px;
+}
+
+.col-hidden {
+  width="70%";
+}
+
+.row-calendar:hover {
+  background-color: #f5f5f5;
+}
+
+.cell-calendar:hover {
+  background-color: #f5f5f5;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.bottom-buffer { 
+  margin-bottom:20px; 
+}
+
+.timepicker.dropdown-menu {
+  padding: 0 4px;
+}
+
+.timepicker.dropdown-menu tbody button {
+    padding: 6px;
+}
+
+.timepicker.dropdown-menu button {
+    outline: none;
+    border: 0px;  
+}
+
+.datepicker.dropdown-menu {
+  width: 250px;
+  height: 270px;
+}
+
+.datepicker.dropdown-menu tbody {
+    height: 180px;
+}
+
+
+.datepicker.dropdown-menu tbody button {
+    padding: 6px;
+}
+
+.datepicker.dropdown-menu button {
+    outline: none;
+    border: 0px;  
+}
+
+.datepicker-mode-1 tbody button{
+    height: 65px;
+}
+
+.datepicker-mode-2 tbody button{
+    height: 65px;
+}
+
+.mousescroll {
+    overflow: hidden;
+}
+.mousescroll:hover {
+    overflow-y: scroll;
+}
+
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+#wrapper {
+  min-height: calc(90vh - 70px);
+  overflow: hidden;
+}
+
+.footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+/*brand style*/
+.brand-header {
+  color: white;  
+}
+.brand-link:hover {
+  text-decoration: none;
+}
+
+/*form page style*/ 
+#app-form .page-header {
+  text-align: center;
+}
+#app-form .form-wrap {
+    width: 30%;
+    margin: 0 auto;
+}
+#app-form .form-group {
+    margin-bottom: 25px;
+}
+#app-form .btn.btn-custom {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+#app-form .form-input {
+    margin-bottom: 10px;
+}

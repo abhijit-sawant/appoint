@@ -1,0 +1,57 @@
+<div id="app-form" class="container" ng-controller="CtrlMakeAppoint" ng-init="populateData()">
+    <div class="page-header">
+        <h2>Reschedule Appointement</h2>
+    </div> 
+    <div class="row">
+		<div class="col-xs-12">
+		    <div class="form-wrap">
+		    	<form role="form" name="makeAppointForm" novalidate>
+		    	    <div class="form-group">
+	    				<label>Patient</label>
+				    	<div>
+				    		<p>{{selectedPatient.firstname}} {{selectedPatient.lastname}}</p>
+				    		<p><i class="fa fa-phone"></i> {{selectedPatient.phoneno}}</p>
+				    		<p><i class="fa fa-envelope"></i> {{selectedPatient.email}}</p>
+				    	</div>
+	    			</div>
+				    <div class="form-group">
+				    	<label>Doctor</label>
+	    				<div>
+	    					<p>{{selectedDocLabel}}</p>
+						</div>
+				    </div>	    			
+	    			<div class="form-group" ng-class="{ 'has-error' : makeAppointForm.date.$error.required && makeAppointForm.$submitted }">
+	    				<label>Date of visit</label>
+	        			<input class="form-control" type="text" name="date" ng-model="selectedDate" ng-change="onDateChanged()" bs-datepicker data-autoclose="1" data-min-date='today' required>
+	        			<span ng-show="makeAppointForm.date.$error.required && makeAppointForm.$submitted" class="help-block">Date is not selected.</span>	            
+			        </div>       	
+				    <div class="form-group">
+	    				<label>Reason of visit</label>
+	    				<div>
+	    					<p>{{selectedReason.lable}}</p>
+						</div>
+	    			</div>
+					<div class="form-group" ng-class="{ 'has-error' : !isTimeValid && makeAppointForm.$submitted }">
+						<label>Select time</label>
+						<div class = "form-control mousescroll" style="height:250px">
+							<table class="table table-hover" ng-click="onTimeSelected($event)">
+								<tr ng-class="{success: $index == selectedTimeIndex}" ng-repeat="timeSlot in availTimeSlots">
+									<td id="{{timeSlot.id}}">{{getTimeAMPM(timeSlot.time)}}</td>
+								</tr>
+							</table>					
+						</div>
+						<span ng-show="!isTimeValid && makeAppointForm.$submitted" class="help-block">Time is not selected.</span>
+					</div>
+					<div class="form-group">
+						<label>Selected time</label>
+						<div>
+							<p>{{selectedTimeLabel}}</p>	
+						</div>
+					</div>	
+					<button type="submit" class="btn btn-success btn-lg btn-block btn-custom" ng-click="onDoneClicked()">Reschedule Appointement</button>	
+				</form>
+				</hr>
+			</div>
+		</div>
+	</div>
+</div>

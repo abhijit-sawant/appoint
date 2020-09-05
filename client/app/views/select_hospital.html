@@ -1,0 +1,31 @@
+<div id = "app-form" class="container"  ng-controller="CtrlHospital" ng-init="populateData()">
+    <div class="page-header">
+        <h2>Select Hospital</h2>
+    </div>    
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-wrap" style="width: 30%;">
+                <ul class="list-group clearfix" ng-repeat="hospital in userHospitals">
+                    <a class="list-group-item" ng-click="onHospitalSelected($index)">
+                        <address>
+                            <strong>{{hospital.name}}</strong><br>
+                            {{hospital.address_line_1}}<br>
+                            <span ng-show="showAddressLine2($index)">{{hospital.address_line_2}}<br></span>
+                            {{hospital.city}}, {{hospital.zip}}<br>
+                            <i class="fa fa-phone"></i> {{hospital.phone}}<br>
+                            <i class="fa fa-envelope"></i> {{hospital.email}}
+                        </address>
+                    </a>
+                </ul>
+                <ul class="list-group clearfix text-center" ng-show="showEmptyMessage()">
+                    <p>Yor are not added to any hospital yet.</p>
+                </ul>
+                <ul class="list-group clearfix text-center">
+                    <a class="list-group-item" ui-sref="registerhospital">
+                        <p style="font-size:1.5em;"><i class="glyphicon glyphicon-plus"></i> Register Hospital</p>                            
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

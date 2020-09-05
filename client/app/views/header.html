@@ -1,0 +1,55 @@
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation" ng-controller="CtrlHeader" ng-init="populateData()">
+    <div class="container">
+        <div class="navbar-header">
+            <h1 class="brand-header">Appoint</h1>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a ui-sref="app">
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 
+                        Calendar
+                    </a>
+                 </li>
+                <li>
+                    <a ng-click="onMakeAppoint()" style="cursor: pointer;">
+                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 
+                        Make Appointement
+                    </a>
+                </li>    
+                <li>
+                    <a ng-click="onAddPatient()" style="cursor: pointer;">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+                        Add Patient
+                    </a>
+                </li>                                    
+                <li>  
+                    <a role="button" bs-dropdown aria-haspopup="true" aria-expanded="false">
+                        {{name}}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-show="showSettings()">
+                            <a ui-sref="app.settings">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 
+                                Settings
+                            </a>
+                        </li>
+                        <li ng-show="showManageUsers()">
+                            <a ui-sref="app.manage_users">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+                                Manage Users
+                            </a>
+                        </li>                        
+                        <li>
+                            <a role="button" ng-click="onLogOutClicked()">
+                                <span class="fa fa-sign-out" aria-hidden="true"></span> 
+                                Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> 

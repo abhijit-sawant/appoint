@@ -1,0 +1,30 @@
+<div class="container"  ng-controller="ScheduleDayController">
+    <div class="page-header" style="text-align: center;">
+        <h2>{{getTitle()}}</h2>
+    </div>    
+    <div class="row">
+        <div class="col-xs-12" ng-init="initAppointemnts()">
+            <div style="width: 50%;margin: 0 auto;">
+                <ul class="list-group clearfix" ng-repeat="appoint in appointements">
+                    <a class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-3 text-center">
+                                <h4>{{getTimeAMPM(appoint.start)}}</h4>
+                                <p>{{appoint.reason}}</p>
+                            </div>
+                            <div class="col-xs-6" style="border-left: 1px solid #ccc;">
+                                <p><strong>{{appoint.patientId.firstname}} {{appoint.patientId.lastname}}</strong></p>
+                                <p><i class="fa fa-phone"></i> {{appoint.patientId.phoneno}}</p>
+                                <p><i class="fa fa-envelope"></i> {{appoint.patientId.email}}</p>
+                            </div>
+                            <div class="col-xs-1 pull-right" style="cursor: pointer"><span class="glyphicon glyphicon-remove" ng-click="onRemoveAppointement(appoint._id)"></div>
+                            <div class="col-xs-1 pull-right" style="cursor: pointer"><span class="glyphicon glyphicon-calendar" ng-click="onRescheduleAppointement(appoint._id)"></div>
+                            <div class="col-xs-1 pull-right" style="cursor: pointer"><span class="glyphicon glyphicon-edit" ng-click="onEditAppointement(appoint._id)"></div>             
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

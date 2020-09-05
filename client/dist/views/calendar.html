@@ -1,0 +1,59 @@
+<div class="container" ng-controller="CalController" ng-init="populateData()">
+    <div class="row">
+        <form class="form-inline pull-right">
+            <div class="form-group">
+                <label for="test">Doctor</label>
+                <select id="test" class="form-control" ng-change="updateDoctor()" ng-options="doctor._id as (doctor.firstname + ' ' + doctor.lastname + ' - ' + doctor.email) for doctor in doctors" ng-model="selectedDocId">
+                </select>
+            </div> 
+        </form>   
+    </div>
+    <div class="row">
+        <div class="btn-group pull-right" style="margin-left: 5px; margin-top: 10px">
+            <button class="btn btn-success" ng-class="{active: !isCurrentViewMonth()}" ng-click="year()">Year</button>
+            <button class="btn btn-success" ng-class="{active: isCurrentViewMonth()}" ng-click="month()">Month</button>
+        </div>        
+        <div class="btn-group pull-right" style="margin-top: 10px">
+            <button class="btn btn-primary" ng-click="prev()"><< Prev</button>
+            <button class="btn btn-primary" ng-click="today()">Today</button>
+            <button class="btn btn-primary" ng-click="next()">Next >></button>
+        </div>
+        <div class="col-xs-3">
+            <h3>{{data_cal.title}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-bordered">
+            <tr ng-show="data_cal.hasHeader">
+                <th ng-repeat="head in data_cal.headers" class="col-xs-1 cell-centered">{{head}}</th>
+            </tr>
+            <tr ng-repeat="row in data_cal.rows" ng-class="{'row-calendar': isCurrentViewMonth()}">
+                <td ng-style="col.lable != '' && {'cursor': 'pointer'}" ng-repeat="col in row" ng-if="isCurrentViewMonth()" ng-class="{success:isToday($parent.$parent.$index, $index)}" ng-click="onCalClicked($parent.$parent.$index, $index)">
+                    <table style="width:100%;" ng-mouseenter="oncell = true" ng-mouseleave="oncell = false">
+                        <tr><td style="height:15px;vertical-align:top;text-align:right;">
+                            <div class="pull-right">
+                                <h3 ng-style="col.isGray == true && {'color': 'darkgray'}">{{col.lable}}</h3>                        
+                            </div>
+                        </td></tr>
+                        <tr><td style="height:15px;vertical-align:bottom;text-align:left;">
+                            <span class="label label-success" ng-show="col.numAppoints != 0" class="badge" ng-click="onScheduleClicked($parent.$parent.$index, $index)">{{col.numAppoints}}</span>
+                        </td></tr>
+                    </table>
+                </td>
+                <td class="cell-calendar" style="height:100px;vertical-align:middle;text-align:center;cursor:pointer;" ng-repeat="col in row" ng-if="!isCurrentViewMonth()" ng-click="onCalClicked($parent.$parent.$index, $index)">
+                    <table style="width:100%;">
+                        <tr><td style="height:50px;vertical-align:top;">
+                            <div>
+                                <h3>{{col.lable}}</h3>                        
+                            </div>
+                        </td></tr>
+                        <tr><td style="height:25px;vertical-align:bottom;text-align:left;">
+                            <span class="label label-success" ng-show="col.numAppoints != 0" class="badge">{{col.numAppoints}}</span>
+                        </td></tr>
+                    </table>                    
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

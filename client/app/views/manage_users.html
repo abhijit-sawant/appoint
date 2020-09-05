@@ -1,0 +1,38 @@
+<div class="container" ng-controller="CtrlManageUser" ng-init="populateData()">
+    <div class="page-header" style="text-align: center;">
+        <h2>Manage Users</h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div style="width: 40%;margin: 0 auto;">
+            	<div class="row" style="margin-bottom: 20px">
+					<div class="btn-group-lrg" ng-model="tabs.activeTab" ng-click="onTabClicked()" style="text-align: center" bs-radio-group>
+						<label class="btn btn-default" ng-repeat="tab in tabs">
+							<input type="radio" class="btn btn-default" value="{{ $index }}">{{tab.title}}</input>
+						</label>
+					</div>
+				</div>
+				<div class="row" style="text-align: center">
+					<button class="btn btn-default"><i class="glyphicon glyphicon-plus" ng-click="onAddUser()"> Add</i></button>
+				</div>
+            	<hr>
+	            <ul class="list-group clearfix" ng-repeat="user in users">
+	                <a class="list-group-item">
+	                    <div class="row">
+	                        <div class="col-xs-10">
+	                            <p><strong>{{user.firstname}} {{user.lastname}}</strong></p>
+	                            <p><i class="fa fa-phone"></i> {{user.phoneno}}</p>
+	                            <p><i class="fa fa-envelope"></i> {{user.email}}</p>
+	                            <p></p>
+	                            <p ng-if="isAdmin(user._id)" class="text-danger"><small><strong>Administrator</strong></small></p>
+	                        </div>
+	                        <div class="col-xs-1 pull-right" style="cursor: pointer"><span class="glyphicon glyphicon-remove" ng-click="onRemoveUser(user._id, $index)"></div>
+	                        <div ng-if="tabs.activeTab == 0 && !isAdmin(user._id)" class="col-xs-1 pull-right" style="cursor: pointer"><i class="fa fa-unlock" ng-click="onMakeAdmin(user._id, $index)"></i></div>
+	                        <div ng-if="tabs.activeTab == 0 && isAdmin(user._id)" class="col-xs-1 pull-right" style="cursor: pointer"><i class="fa fa-lock" ng-click="onRemoveAdmin(user._id)"></i></div>
+	                    </div>
+	                </a>
+	            </ul>            	
+            </div>
+        </div>
+    </div>
+</div>

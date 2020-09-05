@@ -1,0 +1,58 @@
+<div class="modal" tabindex="-1" role="dialog" ng-init="populateData()">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		    <div class="modal-header">
+		    	<button type="button" class="close" ng-click="onClose()"><span class="glyphicon glyphicon-remove"></span></button>
+		        <h4>Make Appointement</h4>
+		    </div> 
+			<div class="modal-body">
+                <form role="form" name="makeAppointForm" novalidate>
+                	<div class="form-group" ng-class="{ 'has-error' : !isPatientValid && makeAppointForm.$submitted }">
+			    		<label>Patient</label>
+			    		<div class="input-group">
+							<input type="text" class="form-control" placeholder="Type Name, Phone number or Email" ng-model="searchTermPatient">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" ng-click="onSearchPatient()"><span class="glyphicon glyphicon-search"></span></button>	
+							</span>
+						</div>		
+						<span id="helpBlock" class="help-block" ng-if="!isPatientSelected()">Select patient using search bar above.</span>						
+					    <div ng-if="isPatientSelected()" style="margin-top:5px;">
+				    		<p><strong>{{selectedPatient.firstname}} {{selectedPatient.lastname}}</strong></p>
+				    		<p><i class="fa fa-phone"></i> {{selectedPatient.phoneno}}</p>
+				    		<p><i class="fa fa-envelope"></i> {{selectedPatient.email}}</p>
+					    </div>	
+					    <span ng-show="!isPatientValid && makeAppointForm.$submitted" class="help-block">Patient is not selected.</span>		    				    
+					</div>
+				    <div class="form-group">
+				    	<label>Doctor</label>
+			            <select class="form-control" ng-change="onDoctorChanged()" ng-options="doctor._id as (doctor.firstname + ' ' + doctor.lastname + ' - ' + doctor.email) for doctor in doctors" ng-model="selectedDocId"></select>
+				    </div>	    
+				    <div class="form-group" ng-class="{ 'has-error' : makeAppointForm.date.$error.required && makeAppointForm.$submitted }">
+				    	<label>Date of visit</label>
+			            <input class="form-control" type="text" name="date" ng-model="selectedDate" ng-change="onDateChanged()" bs-datepicker data-autoclose="1" data-min-date='today' required>  
+			            <span ng-show="makeAppointForm.date.$error.required && makeAppointForm.$submitted" class="help-block">Date is not selected.</span>   	
+				    </div>
+				    <div class="form-group">
+				    	<label>Reason of visit</label>
+   		                <select class="form-control" ng-change="onReasonChanged()" ng-options="reason as reason.lable for reason in reasons" ng-model="selectedReason">
+				        </select>
+				    </div>
+					<div class="form-group" ng-class="{ 'has-error' : !isTimeValid && makeAppointForm.$submitted }">
+						<label>Select time - {{selectedTimeLabel}}</label>
+ 						<div class = "form-control mousescroll" style="height:150px">
+							<table class="table table-hover" ng-click="onTimeSelected($event)">
+								<tr ng-class="{success: $index == selectedTimeIndex}" ng-repeat="timeSlot in availTimeSlots">
+									<td id="{{timeSlot.id}}">{{getTimeAMPM(timeSlot.time)}}</td>
+								</tr>
+							</table>					
+						</div>
+						<span ng-show="!isTimeValid && makeAppointForm.$submitted" class="help-block">Time is not selected.</span>
+					</div>
+					<div class="modal-footer">
+		                <button type="submit" class="btn btn-default" ng-click="onDoneClicked()">Done</button>
+		            </div>					
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

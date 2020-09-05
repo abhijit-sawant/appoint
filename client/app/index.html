@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appoint">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head 
+         content must come *after* these tags -->
+    
+    <title>Calendar</title>   
+
+    <!-- Bootstrap -->
+<!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
+    <link  rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- <link href="styles/bootstrap-social.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../bower_components/ngToast/dist/ngToast.min.css">
+    <link rel="stylesheet" href="styles/mystyles.css"> 
+    <link rel="stylesheet" href="styles/style-schedule-week.css">
+<!-- endbuild -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+    
+<body>
+    <toast></toast>
+    <div ui-view="header"></div>
+    <div id="wrapper">
+        <div ui-view="content"></div>
+    </div>
+<!--     <div ui-view="footer"></div> -->
+
+<!-- build:js scripts/main.js -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/ctrl-addpatient.js"></script>
+    <script src="scripts/ctrl-calendar.js"></script>
+    <script src="scripts/ctrl-editappoint.js"></script>
+    <script src="scripts/ctrl-header.js"></script>
+    <script src="scripts/ctrl-login.js"></script>
+    <script src="scripts/ctrl-makeappoint.js"></script>
+    <script src="scripts/ctrl-manage-users.js"></script>
+    <script src="scripts/ctrl-register.js"></script>
+    <script src="scripts/ctrl-scheduleday.js"></script>
+    <script src="scripts/ctrl-scheduleweek.js"></script>
+    <script src="scripts/ctrl-select-hospital.js"></script>
+    <script src="scripts/ctrl-settings.js"></script>
+    <script src="scripts/serv-calendar.js"></script>
+    <script src="scripts/serv-users.js"></script>
+    <script src="scripts/serv-utilities.js"></script>
+    <script src="scripts/serv-scheduleday.js"></script>
+    <script src="scripts/serv-settings.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/angular-strap/dist/angular-strap.min.js"></script>
+    <script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="../bower_components/ngToast/dist/ngToast.min.js"></script>
+<!-- endbuild -->
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<div id = "app-form" class="container" ng-controller="CtrlHospital">
+    <div class="page-header">
+        <h2>Register Hospital</h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-wrap">
+                <form role="form" name="registerHospForm" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : registerHospForm.hospitalName.$error.required && registerHospForm.$submitted }">
+                        <label>Hospital Name</label>
+                        <input type="text" name="hospitalName" class="form-control" ng-model="hospitalName" required>
+                        <span ng-show="registerHospForm.hospitalName.$error.required && registerHospForm.$submitted" class="help-block">Hospital Name is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <div ng-class="{ 'has-error' : registerHospForm.addressLine1.$error.required && registerHospForm.$submitted }">
+                            <input type="text" class="form-control form-input" placeholder="address line 1" name="addressLine1" ng-model="addressLine1" required>
+                            <span ng-show="registerHospForm.addressLine1.$error.required && registerHospForm.$submitted" class="help-block">This address line is required.</span>
+                        </div>
+                        <input type="text" class="form-control form-input" placeholder="address line 2" ng-model="addressLine2">
+                        <div class="row">
+                            <div class="col-xs-6" ng-class="{ 'has-error' : registerHospForm.addressCity.$error.required && registerHospForm.$submitted }">
+                                <input type="text" class="form-control form-input" placeholder="City" name="addressCity" ng-model="addressCity" required>
+                                <span ng-show="registerHospForm.addressCity.$error.required && registerHospForm.$submitted" class="help-block">City is required.</span>
+                            </div>
+                            <div class="col-xs-6" ng-class="{ 'has-error' : registerHospForm.addressState.$error.required && registerHospForm.$submitted }">
+                                <input type="text" class="form-control form-input" placeholder="State" name="addressState" ng-model="addressState" required>
+                                <span ng-show="registerHospForm.addressState.$error.required && registerHospForm.$submitted" class="help-block">State is required.</span>
+                            </div>
+                        </div>
+                        <div ng-class="{ 'has-error' : registerHospForm.addressZip.$error.required && registerHospForm.$submitted }">
+                            <input type="text" class="form-control form-input" placeholder="Zip Code" name="addressZip" ng-model="addressZip" required>
+                            <span ng-show="registerHospForm.addressZip.$error.required && registerHospForm.$submitted" class="help-block">Zip is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : registerHospForm.addressPhoneNo.$error.required && registerHospForm.$submitted }">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" name="addressPhoneNo" ng-model="addressPhoneNo" required>
+                        <span ng-show="registerHospForm.addressPhoneNo.$error.required && registerHospForm.$submitted" class="help-block">Phone is required.</span>
+                    </div>   
+                    <div class="form-group" ng-class="{ 'has-error' : registerHospForm.addressEmail.$error.email && registerHospForm.$submitted }">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="addressEmail" ng-model="addressEmail">
+                        <span ng-show="registerHospForm.addressEmail.$error.email && registerHospForm.$submitted" class="help-block">Email is not valid.</span>
+                    </div>                                     
+                    <button class="btn btn-success btn-lg btn-block btn-custom" ng-click="onRegisterHospital()">Register Hospital</button>
+                </form>
+                <hr>
+            </div>
+        </div> 
+    </div> 
+</div>

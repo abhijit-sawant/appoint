@@ -1,0 +1,40 @@
+<div id = "app-form" class="container" ng-controller="CtrlPatientAdd">
+    <div class="page-header">
+        <h2>Add Patient</h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-wrap">
+                <form role="form" name="addPatientForm" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : addPatientForm.firstName.$error.required && addPatientForm.$submitted }">
+                        <label>First Name</label>
+                        <input class="form-control" name="firstName" type="text" ng-model="firstName" required>
+                        <span ng-show="addPatientForm.firstName.$error.required && addPatientForm.$submitted" class="help-block">First Name is required.</span>        
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : addPatientForm.lastName.$error.required && addPatientForm.$submitted }">
+                        <label>Last Name</label>        
+                        <input class="form-control" name="lastName" type="text" ng-model="lastName" required>
+                        <span ng-show="addPatientForm.lastName.$error.required && addPatientForm.$submitted" class="help-block">Last Name is required.</span>        
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : addPatientForm.phoneNumber.$error.required && addPatientForm.$submitted }">
+                        <label>Phone Number</label>           
+                        <input class="form-control" name="phoneNumber" type="tel" ng-model="phoneNumber" required>
+                        <span ng-show="addPatientForm.phoneNumber.$error.required && addPatientForm.$submitted" class="help-block">Phone Number is required.</span>     
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : (addPatientForm.eMail.$error.required || addPatientForm.eMail.$error.email) && addPatientForm.$submitted }">
+                        <label>Email</label>          
+                        <input class="form-control" name="eMail" type="email" ng-model="email" required>  
+                        <span ng-show="addPatientForm.eMail.$error.required && addPatientForm.$submitted" class="help-block">Email is required.</span>
+                        <span ng-show="addPatientForm.eMail.$error.email && addPatientForm.$submitted" class="help-block">Email is not valid.</span>
+                    </div>  
+                    <div class="alert alert-danger" ng-show="isFailed">
+                        {{msgFailed}}
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg btn-block btn-custom" ng-click="onAdd()">Add Patient</button>
+                </form>
+                </hr>
+            </div>
+        </div>                               
+    </div>
+</div>
+

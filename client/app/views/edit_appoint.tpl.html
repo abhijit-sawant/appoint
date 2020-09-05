@@ -1,0 +1,41 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()"><span class="glyphicon glyphicon-remove"></span></button>
+                <h4 class="modal-title">Appointement - 8:00 AM</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <p><strong>{{appointement.patientId.firstname}} {{appointement.patientId.lastname}}</strong></p>
+                        <p><i class="fa fa-phone"></i> {{appointement.patientId.phoneno}}</p>
+                        <p><i class="fa fa-envelope"></i> {{appointement.patientId.email}}</p>
+                    </div>         
+                    <div class="form-group">
+                        <label>Reason</label>
+                        <div>
+                            <p>{{appointement.reason}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Symptoms</label>        
+                        <textarea class="form-control" rows="3" ng-model="appointement.symptom">{{appointement.symptom}}</textarea>       
+                    </div>
+                    <div class="form-group">
+                        <label>Diagnosis</label>          
+                        <textarea class="form-control" rows="3" ng-model="appointement.diagnosis">{{appointement.diagnosis}}</textarea>       
+                    </div>  
+                    <div class="form-group">
+                        <label>Prescription</label>
+                        <textarea class="form-control" rows="3" ng-model="appointement.prescription">{{appointement.prescription}}</textarea>  
+                    </div>  
+                </form>                       
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="onDone()">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+

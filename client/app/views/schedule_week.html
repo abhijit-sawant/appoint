@@ -1,0 +1,73 @@
+<div class="container" ng-controller="ScheduleWeekController" ng-init="populateData()">
+
+    <div class="row">
+        <form class="form-inline pull-right">
+            <div class="form-group">
+                <label for="test">Doctor</label>
+                <select id="test" class="form-control" ng-change="updateDoctor()" ng-options="doctor._id as (doctor.firstname + ' ' + doctor.lastname + ' - ' + doctor.email) for doctor in doctors" ng-model="selectedDocId">
+                </select>
+            </div> 
+        </form> 
+        <form class="form-inline pull-left">
+            <div class="form-group">
+                <label>Show available slots for</label>
+                <select class="form-control" ng-change="onReasonChanged()" ng-options="reason as reason.lable for reason in reasons" ng-model="selectedReason">
+                </select>
+            </div>
+        </form>          
+    </div>
+  
+    <div class="row">
+        <div class="btn-group pull-right" style="margin-left: 5px; margin-top: 10px">
+            <button class="btn btn-success" ng-click="year()">Year</button>
+            <button class="btn btn-success" ng-click="month()">Month</button>
+        </div>        
+        <div class="btn-group pull-right" style="margin-top: 10px">
+            <button class="btn btn-primary" ng-click="prev()"><< Prev</button>
+            <button class="btn btn-primary" ng-click="today()">Today</button>
+            <button class="btn btn-primary" ng-click="next()">Next >></button>
+        </div>
+        <div class="pull-left">
+            <h3>{{dayLable}}</h3>
+        </div>
+    </div>
+
+    <div class = "row">
+        <div class="cd-schedule">
+            <div class="events" style="width: calc(100% - 35px)">
+                <ul>
+                    <li ng-repeat="weekDate in weekDates" class="events-group">
+                        <div ng-class="isToday($index) ? 'top-info today' : 'top-info'"><span ng-style="weekDate.isGray == true && {'color': 'darkgray'}">{{weekDate.lable}}</span></div>
+                    </li>        
+                </ul>
+            </div>      
+
+            <div style="position: relative; overflow-y: auto; height: 500px; width: 100%">
+                <div class="timeline" id="events-wrapper">
+                    <ul style="padding-left: 0px;">
+                        <li ng-repeat="time in timeSlots" ng-style="$index == timeSlots.length - 1 && {'height': '0px'}">
+                            <span ng-style="$index == 0 && {'margin-top': '10px'}">{{time}}</span>
+                        </li>                    
+                    </ul>
+                </div> <!-- .timeline -->     
+
+            	<div class="events">
+            		<ul>
+                        <li class="events-group" ng-repeat="dayData in appointData track by $index" style="height: {{event_grp_height}}px; border-top: none">
+                            <ul>
+                                <li class="single-event" ng-repeat="data in dayData track by $index" style="top: {{data.top}}px; height: {{data.height}}px;">
+                                    <div class = "non-empty" ng-show="!data.empty && data.id != null" ng-click="openAppoint(data.id)" style="height: 100%">
+                                        <span class="event-date">{{data.time}}</span>
+                                        <span class="event-name">{{data.reason}}</span>
+                                    </div>
+                                    <div class="empty" ng-show="data.empty && showAvailSlots()" ng-click="makeAppoint($index, $parent.$index)">
+                                    </div>                                                               
+                                </li>                          
+                            </ul>
+                        </li>                  
+            		</ul>               
+            	</div>     
+            </div>
+        </div> 
+    </div> 
+</div> <!-- .cd-schedule -->

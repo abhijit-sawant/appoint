@@ -1,0 +1,47 @@
+<div style="width: 50%" class="container" ng-controller="CtrlEditAppoint" ng-init="populateData()">
+    <div class="row">
+        <div class="pull-right">
+            <button class="btn btn-success" style="margin-left: 5px; margin-top: 10px" ng-click="onBack()">Back</button>
+            <button class="btn btn-success" style="margin-left: 5px; margin-top: 10px" ng-click="onRemoveAppoint()">Cancel</button> 
+            <button class="btn btn-success" style="margin-top: 10px" ng-click="onReschedule()">Reschedule</button> 
+        </div>    
+        <div style="border-bottom: 1px solid #eee; margin-bottom: 20px">
+            <h3>{{getAppointLabel()}}</h3>
+        </div> 
+    </div>
+   
+    <div class="row">
+        <div class="col-xs-12">
+            <form role="form">
+                <div class="form-group">
+                    <p><strong>{{appointement.patientId.firstname}} {{appointement.patientId.lastname}}</strong></p>
+                    <p><i class="fa fa-phone"></i> {{appointement.patientId.phoneno}}</p>
+                    <p><i class="fa fa-envelope"></i> {{appointement.patientId.email}}</p>
+                </div>   
+                <br/>      
+                <div class="form-group">
+                    <label>Reason</label>
+                    <div>
+                        <p>{{appointement.reason}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Symptoms</label>        
+                    <textarea class="form-control" rows="3" ng-model="appointement.symptom">{{appointement.symptom}}</textarea>       
+                </div>
+                <div class="form-group">
+                    <label>Diagnosis</label>          
+                    <textarea class="form-control" rows="3" ng-model="appointement.diagnosis">{{appointement.diagnosis}}</textarea>       
+                </div>  
+                <div class="form-group">
+                    <label>Prescription</label>
+                    <textarea class="form-control" rows="3" ng-model="appointement.prescription">{{appointement.prescription}}</textarea>  
+                </div>                    
+            </form>
+            <div class="text-center">
+                <div style="width: 25%" class="btn btn-success" ng-click="onDone()">Done</div>
+            </div>                       
+        </div>
+    </div>
+</div>
+
